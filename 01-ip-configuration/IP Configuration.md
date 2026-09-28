@@ -2,7 +2,7 @@ In this practical we will connect 2 routers and 2 switches and 6 pc
 here is the vedio of the output 
 
 here we can a pdu message has been sent from pc0 to pc3 
-![[20260909-1017-48.2630690.mp4]]
+[[20260909-1017-48.2630690.mp4]]
 
 this ping is from pc0 to pc1   here we can see that  our message has been sent successfully to the pc0 to pc1 without any lost 
 
