@@ -1,1 +1,35 @@
-# 01 IP CONFIGURATION
+# DHCP Configuration and Inter-Network Routing
+
+This practical was performed using Cisco Packet Tracer to configure two separate LAN networks connected through two routers.
+
+The practical demonstrates:
+
+- DHCP configuration
+- IPv4 addressing
+- Router interface configuration
+- Router-to-router WAN connectivity
+- Static routing
+- Default gateway configuration
+- ARP
+- ICMP
+- Inter-LAN communication
+- Packet simulation and hop-by-hop analysis
+
+---
+
+## 1. Network Topology
+
+The topology consists of:
+
+- 2 × Cisco 1841 Routers
+- 2 × Cisco 2960-24TT Switches
+- 6 × PCs
+- Serial WAN connection between the routers
+- wires copper straight-through
+### Network Structure
+
+```text
+PC0 ─┐
+PC1 ─┼── Switch0 ── Router0 ───── Router1 ── Switch1 ─┬── PC3
+PC2 ─┘                   WAN                           ├── PC4
+                                                      └── PC5
