@@ -8,6 +8,11 @@ This folder contains the first Cisco networking practical.
 
 ## Media
 
-The practical was originally created in Obsidian and references screenshots and a video. GitHub can display the screenshots once the actual image files are uploaded, but the uploaded Markdown file contains only Obsidian links to those media files, not the media files themselves.
+The practical has been performed has been knowledge of packets and ip configuration works and easy understanding of the system 
+
+i have done the connections and all the working and the output i have uploaded the files  media in the media folder 
+i have shown show ip route 
+show ip brief 
+and a ping test from pc to pc 
 
 See the [media folder](./01-IP-CONFIGURATION-PRACTICAL/media/) for the media requirements.
