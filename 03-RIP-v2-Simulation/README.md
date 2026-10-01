@@ -12,7 +12,7 @@ To create a multi-router network in Cisco Packet Tracer and observe how **ARP, I
 
 **▶️ [Watch / Download the RIP v2 Simulation Video](./media/Screen%20Recording%202026-10-01%20211929.mp4)**
 
-> If GitHub does not preview the MP4 directly, click the link above to open or download the video.
+> The video link is placed near the top so it is easy to find. If GitHub does not preview the MP4 directly, click the link to open or download it.
 
 ---
 
@@ -33,52 +33,56 @@ The practical consists of:
 
 ---
 
-## ⚙️ Routing and Verification
+# 🖥️ R0 Verification Screenshots
 
-The practical uses **RIP version 2** to exchange routing information between the routers.
+The following screenshots are from **Router R0**.
 
-### 1. Verify Router Interfaces
+## 1. R0 — Network Topology
 
-The `show ip interface brief` command was used to check the configured interfaces and their status.
+![R0 Network Topology](./media/01-rip-v2-network-topology.png)
 
-![Show IP Interface Brief](./media/02-show-ip-interface-brief.png)
+The topology shows R0 connected to the local switch and PCs, with a serial connection from R0 toward R1.
+
+---
+
+## 2. R0 — Show IP Interface Brief
+
+The `show ip interface brief` command was used to check the configured interfaces, IP addresses, and interface status.
+
+![R0 Show IP Interface Brief](./media/02-r0-show-ip-interface-brief.png)
 
 The screenshot shows:
 
 - FastEthernet0/0 — `192.168.1.1`
 - Serial0/1/0 — `10.0.0.1`
-- The shown active interfaces have **Status: up** and **Protocol: up**
+- FastEthernet0/0 — **up/up**
+- Serial0/1/0 — **up/up**
 
 ---
 
-### 2. Check the Routing Table
+## 3. R0 — Show IP Route
 
-The `show ip route` command was used to observe routes learned by the router.
+The `show ip route` command was used to view the routing table and routes learned through RIP.
 
-![Show IP Route](./media/03-show-ip-route.png)
+![R0 Show IP Route](./media/03-r0-show-ip-route.png)
 
-The routing table shows RIP-learned routes marked with **R**, including routes to:
-
-- `10.0.0.4/30`
-- `192.168.2.0/24`
-- `192.168.3.0/24`
-
-The routes are learned through the next-hop router using RIP.
+The routing table shows RIP-learned routes marked with **R**, including remote networks reached through the next-hop router.
 
 ---
 
-### 3. Verify RIP v2
+## 4. R0 — Show IP Protocols
 
 The `show ip protocols` command was used to verify the routing protocol configuration.
 
-![Show IP Protocols](./media/04-show-ip-protocols.png)
+![R0 Show IP Protocols](./media/04-r0-show-ip-protocols.png)
 
 The screenshot shows:
 
 - Routing Protocol: **rip**
 - **Send version 2, receive version 2**
-- Routing network: `10.0.0.0`
-- Routing network: `192.168.1.0`
+- Routing networks:
+  - `10.0.0.0`
+  - `192.168.1.0`
 - Routing information source: `10.0.0.2`
 
 ---
@@ -104,21 +108,21 @@ The practical can be observed using the **Simulation** tab in Cisco Packet Trace
 
 ## 📸 Screenshots
 
-### Network Topology
+### R0 — Network Topology
 
 ![Network Topology](./media/01-rip-v2-network-topology.png)
 
-### Show IP Interface Brief
+### R0 — Show IP Interface Brief
 
-![Show IP Interface Brief](./media/02-show-ip-interface-brief.png)
+![Show IP Interface Brief](./media/02-r0-show-ip-interface-brief.png)
 
-### Show IP Route
+### R0 — Show IP Route
 
-![Show IP Route](./media/03-show-ip-route.png)
+![Show IP Route](./media/03-r0-show-ip-route.png)
 
-### Show IP Protocols — RIP v2
+### R0 — Show IP Protocols — RIP v2
 
-![Show IP Protocols](./media/04-show-ip-protocols.png)
+![Show IP Protocols](./media/04-r0-show-ip-protocols.png)
 
 ---
 
@@ -137,6 +141,7 @@ From this practical, we learned:
 - How **ICMP** is used for network connectivity testing.
 - How to use **Simulation Mode** to observe packets travelling hop-by-hop.
 - How routing information determines the path followed by packets between different networks.
+- How to verify RIP v2 configuration on an individual router such as **R0**.
 
 ---
 
@@ -144,13 +149,13 @@ From this practical, we learned:
 
 - **Packet Tracer file:** `RIP-v2-Simulation.pkt` *(add the file here if required)*
 - **Video:** [RIP v2 Simulation Video](./media/Screen%20Recording%202026-10-01%20211929.mp4)
-- **Topology screenshot:** [01-rip-v2-network-topology.png](./media/01-rip-v2-network-topology.png)
-- **Interface verification:** [02-show-ip-interface-brief.png](./media/02-show-ip-interface-brief.png)
-- **Routing table:** [03-show-ip-route.png](./media/03-show-ip-route.png)
-- **RIP verification:** [04-show-ip-protocols.png](./media/04-show-ip-protocols.png)
+- **Topology:** [R0 Network Topology](./media/01-rip-v2-network-topology.png)
+- **R0 Interface Verification:** [show ip interface brief](./media/02-r0-show-ip-interface-brief.png)
+- **R0 Routing Table:** [show ip route](./media/03-r0-show-ip-route.png)
+- **R0 RIP Verification:** [show ip protocols](./media/04-r0-show-ip-protocols.png)
 
 ---
 
 ## ✅ Result
 
-The multi-router topology was configured in Cisco Packet Tracer and RIP v2 was verified. The practical demonstrates how **ARP, ICMP and dynamic routing information** can be observed through Packet Tracer's Simulation Mode.
+The multi-router topology was configured in Cisco Packet Tracer and RIP v2 was verified on R0. The practical demonstrates how **ARP, ICMP and dynamic routing information** can be observed through Packet Tracer's Simulation Mode.
