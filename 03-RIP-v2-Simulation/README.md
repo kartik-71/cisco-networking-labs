@@ -29,7 +29,8 @@ The practical consists of:
 
 ### Topology
 
-![RIP v2 Network Topology](./media/01-rip-v2-network-topology.png)
+![RIP v2 Network Topology]<img width="842" height="502" alt="image" src="https://github.com/user-attachments/assets/5f083d99-e642-49ba-9808-38153150785c" />
+
 
 ---
 
@@ -39,7 +40,8 @@ The following screenshots are from **Router R0**.
 
 ## 1. R0 — Network Topology
 
-![R0 Network Topology](./media/01-rip-v2-network-topology.png)
+![R0 Network Topology]<img width="842" height="502" alt="image" src="https://github.com/user-attachments/assets/f3f0338a-6476-4539-be27-b6daf06a07f9" />
+
 
 The topology shows R0 connected to the local switch and PCs, with a serial connection from R0 toward R1.
 
@@ -49,7 +51,8 @@ The topology shows R0 connected to the local switch and PCs, with a serial conne
 
 The `show ip interface brief` command was used to check the configured interfaces, IP addresses, and interface status.
 
-![R0 Show IP Interface Brief](./media/02-r0-show-ip-interface-brief.png)
+![R0 Show IP Interface Brief]<img width="701" height="132" alt="Screenshot 2026-10-01 213523" src="https://github.com/user-attachments/assets/66300f19-c31b-4758-aa2d-67ddc4736a2b" />
+
 
 The screenshot shows:
 
@@ -64,7 +67,8 @@ The screenshot shows:
 
 The `show ip route` command was used to view the routing table and routes learned through RIP.
 
-![R0 Show IP Route](./media/03-r0-show-ip-route.png)
+![R0 Show IP Route]<img width="667" height="290" alt="Screenshot 2026-10-01 213622" src="https://github.com/user-attachments/assets/aeb0ee86-6d13-4a31-9009-81d2a14fc5ec" />
+
 
 The routing table shows RIP-learned routes marked with **R**, including remote networks reached through the next-hop router.
 
@@ -74,7 +78,8 @@ The routing table shows RIP-learned routes marked with **R**, including remote n
 
 The `show ip protocols` command was used to verify the routing protocol configuration.
 
-![R0 Show IP Protocols](./media/04-r0-show-ip-protocols.png)
+![R0 Show IP Protocols]<img width="512" height="331" alt="Screenshot 2026-10-01 213702" src="https://github.com/user-attachments/assets/b47eb815-2b59-4387-85a1-8542a0c809e5" />
+
 
 The screenshot shows:
 
@@ -110,19 +115,23 @@ The practical can be observed using the **Simulation** tab in Cisco Packet Trace
 
 ### R0 — Network Topology
 
-![Network Topology](./media/01-rip-v2-network-topology.png)
+![Network Topology]<img width="842" height="502" alt="Screenshot 2026-10-01 212005" src="https://github.com/user-attachments/assets/46790300-8b88-4cce-a4b4-ac23c0437185" />
+
 
 ### R0 — Show IP Interface Brief
 
-![Show IP Interface Brief](./media/02-r0-show-ip-interface-brief.png)
+![Show IP Interface Brief]<img width="701" height="132" alt="Screenshot 2026-10-01 213523" src="https://github.com/user-attachments/assets/c0d300a8-e856-41f9-92cf-a60f75da0491" />
+
 
 ### R0 — Show IP Route
 
-![Show IP Route](./media/03-r0-show-ip-route.png)
+![Show IP Route]<img width="667" height="290" alt="Screenshot 2026-10-01 213622" src="https://github.com/user-attachments/assets/3d3b17a9-c9bc-4f83-9fc5-f1d2b4c3cb05" />
+
 
 ### R0 — Show IP Protocols — RIP v2
 
-![Show IP Protocols](./media/04-r0-show-ip-protocols.png)
+![Show IP Protocols]<img width="512" height="331" alt="Screenshot 2026-10-01 213702" src="https://github.com/user-attachments/assets/a7fc7afe-413d-48ba-a822-739126bedcf0" />
+
 
 ---
 
