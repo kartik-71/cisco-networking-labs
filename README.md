@@ -12,6 +12,7 @@ This repository documents networking practicals completed while learning network
 | [02 — DHCP Configuration](./02%20DHCP%20AND%20ROUTING/DHCP%20PRACTICAL%20FILES/README.md) | Automatic IP configuration, DHCP pool and client verification | [DHCP project](./02%20DHCP%20AND%20ROUTING/DHCP%20PRACTICAL%20FILES/dhcp.pkt) · [Video](./02%20DHCP%20AND%20ROUTING/DHCP%20PRACTICAL%20FILES/Screen%20Recording%202026-09-30%20202440.mp4) |
 | [03 — RIP v2 Simulation](./03-RIP-v2-Simulation/README.md) | Dynamic routing, ARP, ICMP, route learning and Simulation Mode | [Packet Tracer file](./03-RIP-v2-Simulation/Ripconfiguration.pkt) |
 | [04 static routing](./04%20static%20routing/) | Static routes, destination networks, next hops and route verification | [Practical video](./04%20static%20routing/STATIC%20ROUTING%20PRACTICAL/Screen%20Recording%202026-10-03%20171408.mp4) |
+| [05 — STP (Spanning Tree Protocol)](./STP/README.md) | Root bridge election, redundant switch links, loop prevention and ping verification | [Ping results](./STP/STP-Ping-Results.svg) |
 
 ## How to Use This Repository
 
@@ -39,7 +40,7 @@ Use only the commands relevant to the practical and the device where you are run
 - Understand IPv4 addressing, subnet masks and default gateways.
 - Connect routers, switches and PCs in Packet Tracer.
 - Verify interface status and routing tables.
-- Configure and understand DHCP, static routing and RIP v2.
+- Configure and understand DHCP, static routing, RIP v2 and STP.
 - Use ping and Simulation Mode to investigate connectivity.
 - Record practical work in clear, reproducible documentation.
 
