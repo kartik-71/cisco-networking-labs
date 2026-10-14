@@ -181,7 +181,7 @@ The screenshot evidence supplied for this practical includes:
 4. R1 OSPF neighbor output showing R2 in FULL state.
 5. R2 OSPF neighbor output showing R1 and R3 in FULL states.
 
-The screenshot bundle is maintained separately as **OSPF_Screenshots.pdf**.
+A separate screenshot bundle named **OSPF_Screenshots.pdf** has been prepared for this practical and should be uploaded into this folder.
 
 ## 10. Important OSPF Commands
 
