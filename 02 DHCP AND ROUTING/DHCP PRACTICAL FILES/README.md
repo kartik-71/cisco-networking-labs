@@ -1,167 +1,156 @@
-# DHCP Configuration Practical
+# DHCP Configuration and Verification Practical
 
-## Practical Name
+> **Cisco Packet Tracer · Dynamic Host Configuration Protocol · Automatic IPv4 configuration**
 
-**Dynamic Host Configuration Protocol (DHCP) Configuration and Verification using Cisco Packet Tracer**
+## 1. Practical Overview
 
----
+This practical demonstrates how Dynamic Host Configuration Protocol (DHCP) can provide network settings to client PCs automatically. Instead of manually entering every client's IP configuration, a DHCP server or router configured for DHCP can assign addresses from a configured pool. The lab is documented with a Packet Tracer project, screenshots and a screen-recording video.
 
-## Objective
+## 2. Practical Details
 
-To configure and test DHCP in a Cisco Packet Tracer network and verify that connected PCs can obtain their network configuration automatically.
-
----
-
-## Software Used
-
-- Cisco Packet Tracer
-- Cisco IOS command-line interface
-- PC Command Prompt in Packet Tracer
-
----
-
-## Practical Files
-
-| File | Description |
+| Item | Details |
 |---|---|
-| `dhcp.pkt` | Cisco Packet Tracer practical file |
-| `Screen Recording 2026-09-30 202440.mp4` | Practical demonstration video |
-| `Screenshot 2026-09-30 202157.png` | Practical screenshot |
-| `Screenshot 2026-09-30 202208.png` | Practical screenshot |
-| `Screenshot 2026-09-30 202245.png` | Practical screenshot |
-| `Screenshot 2026-09-30 202309.png` | Practical screenshot |
+| Practical name | Dynamic Host Configuration Protocol (DHCP) Configuration and Verification |
+| Software | Cisco Packet Tracer |
+| Main topic | Automatic IPv4 configuration using DHCP |
+| Supporting concepts | IP addressing, subnet masks, default gateway, DHCP pool and connectivity testing |
+| Client verification | PC **Desktop → IP Configuration** and `ipconfig` |
+| Router verification | `show ip interface brief`, `show ip dhcp binding`, `show ip dhcp pool` where applicable |
 
----
+## 3. Objective
 
-## Procedure
+To configure and test a DHCP-based network in Cisco Packet Tracer and verify that client PCs receive their network configuration automatically. The practical also aims to check the addressing configuration and test connectivity after DHCP assignment.
 
-### 1. Open Cisco Packet Tracer
+## 4. Files Included
 
-1. Open **Cisco Packet Tracer**.
-2. Start a new workspace.
-3. Add the required network devices and PCs.
-4. Arrange the devices so the network topology is easy to configure and understand.
+| File name | What it is for |
+|---|---|
+| [`dhcp.pkt`](./dhcp.pkt) | Opens the saved DHCP network topology and device configuration in Cisco Packet Tracer. |
+| [`Screen Recording 2026-09-30 202440.mp4`](./Screen%20Recording%202026-09-30%20202440.mp4) | Screen recording of the practical. Use this link to open or download the video. |
+| [`Screenshot 2026-09-30 202157.png`](./Screenshot%202026-09-30%20202157.png) | First screenshot captured for the DHCP practical. |
+| [`Screenshot 2026-09-30 202208.png`](./Screenshot%202026-09-30%20202208.png) | Second screenshot captured for the DHCP practical. |
+| [`Screenshot 2026-09-30 202245.png`](./Screenshot%202026-09-30%20202245.png) | Third screenshot captured for the DHCP practical. |
+| [`Screenshot 2026-09-30 202309.png`](./Screenshot%202026-09-30%20202309.png) | Fourth screenshot captured for the DHCP practical. |
 
-### 2. Connect the Devices
+## 5. Procedure
 
-1. Select the appropriate cable from the **Connections** section.
-2. Connect the network devices and PCs.
-3. Wait for the interfaces/links to become active.
-4. Check that the physical connections are correct before starting the configuration.
+### Step 1 — Open Packet Tracer
 
-### 3. Configure the Network
+1. Open Cisco Packet Tracer.
+2. Open the existing [`dhcp.pkt`](./dhcp.pkt) project, or create a new workspace if repeating the lab from the beginning.
+3. Review the topology and identify the router/server, switch and client PCs.
 
-1. Open the required router/device.
-2. Go to the **CLI**.
-3. Configure the required interface IP addressing.
-4. Make sure the interface is enabled.
-5. Configure the DHCP service/pool according to the network used in the practical.
+### Step 2 — Connect the devices
 
-### 4. Configure the PCs for DHCP
+1. Use the **Connections** tool to select the appropriate cables.
+2. Connect each PC to the relevant switch.
+3. Connect the switch to the device providing network connectivity and DHCP service.
+4. Wait for the links to become active and verify that the physical connections match the topology.
 
-1. Open a PC.
-2. Select **Desktop**.
-3. Open **IP Configuration**.
-4. Select **DHCP** instead of entering the IP address manually.
-5. Check whether the PC receives its network configuration automatically.
-6. Repeat this for the required PCs.
+### Step 3 — Configure the network and DHCP service
 
-### 5. Verify the DHCP Configuration
+1. Open the relevant router or server configuration.
+2. Configure the required interface IP address and subnet mask.
+3. Ensure the required interface is enabled.
+4. Configure the DHCP service or pool according to the network addressing plan used in the practical.
+5. Set the correct network/subnet and, where applicable, the default gateway and DNS settings.
+6. Exclude any addresses that must remain reserved for statically configured devices, if required by the lab.
 
-Use the Packet Tracer CLI and PC command prompt to verify the configuration.
+> The exact pool values should match the saved Packet Tracer configuration; they are not assumed in this report.
 
-Useful verification commands include:
+### Step 4 — Request an address on each PC
 
-```text
-show ip interface brief
-```
+1. Open a client PC.
+2. Select **Desktop → IP Configuration**.
+3. Select **DHCP**.
+4. Wait for the client to request and receive its configuration.
+5. Check the assigned IPv4 address, subnet mask and default gateway.
+6. Repeat for the other client PCs.
 
-and, where applicable:
+### Step 5 — Verify the configuration
 
-```text
-show ip dhcp binding
-show ip dhcp pool
-```
-
-On a PC, the assigned configuration can also be checked from:
-
-**Desktop → Command Prompt**
+On the PC, open **Desktop → Command Prompt** and run:
 
 ```text
 ipconfig
 ```
 
-### 6. Test Connectivity
-
-After the PCs receive their IP configuration:
-
-1. Open the PC Command Prompt.
-2. Check the assigned IP address.
-3. Test connectivity using `ping`.
-4. Confirm that the expected devices can communicate successfully.
-
-Example:
+On the router, use the commands applicable to the configuration:
 
 ```text
-ping <destination-ip>
+show ip interface brief
+show ip dhcp binding
+show ip dhcp pool
 ```
 
----
+The DHCP commands display address leases and pool information when DHCP is configured on that router. If DHCP is provided by a server instead, inspect the server's DHCP service settings.
 
-## Screenshots
+### Step 6 — Test connectivity
 
-### Screenshot 1
+1. Confirm that the PC has received a valid address.
+2. Ping the configured default gateway.
+3. If the topology includes other reachable devices, ping the relevant destination IP.
+4. If the test fails, check cabling, interface status, the DHCP pool, gateway settings and client address assignment.
 
-![DHCP Practical Screenshot 1](./Screenshot%202026-09-30%20202157.png)
+## 6. Screenshots and Evidence
 
-### Screenshot 2
+### Screenshot 1 — DHCP setup
 
-![DHCP Practical Screenshot 2](./Screenshot%202026-09-30%20202208.png)
+![DHCP practical screenshot 1](./Screenshot%202026-09-30%20202157.png)
 
-### Screenshot 3
+This screenshot is the first visual record of the DHCP practical.
 
-![DHCP Practical Screenshot 3](./Screenshot%202026-09-30%20202245.png)
+### Screenshot 2 — Configuration evidence
 
-### Screenshot 4
+![DHCP practical screenshot 2](./Screenshot%202026-09-30%20202208.png)
 
-![DHCP Practical Screenshot 4](./Screenshot%202026-09-30%20202309.png)
+Use this screenshot to review the configuration shown in the practical.
 
----
+### Screenshot 3 — Client or network verification
 
-## Practical Demonstration Video
+![DHCP practical screenshot 3](./Screenshot%202026-09-30%20202245.png)
 
-The complete practical demonstration is available here:
+This image provides another stage of the DHCP configuration or verification process.
 
-**[▶️ Watch / Download the Practical Video](./Screen%20Recording%202026-09-30%20202440.mp4)**
+### Screenshot 4 — Final evidence
 
-> GitHub may not preview a large MP4 directly in the repository file viewer. The link above opens the video file.
+![DHCP practical screenshot 4](./Screenshot%202026-09-30%20202309.png)
 
----
+This is the fourth screenshot included with the practical.
 
-## What We Learned
+## 7. Practical Demonstration Video
 
-From this practical, we learned:
+**[▶️ Watch / download the DHCP practical video](./Screen%20Recording%202026-09-30%20202440.mp4)**
 
-- The purpose of **DHCP** in a computer network.
-- How DHCP can automatically provide network configuration to client PCs.
-- How to configure and work with a DHCP-based network in **Cisco Packet Tracer**.
-- How to configure network interfaces before testing connectivity.
-- How to configure PCs to obtain their IP configuration automatically.
-- How to verify assigned IP configuration from a PC.
-- How to use Cisco IOS verification commands to check the network configuration.
-- How to test connectivity using the `ping` command.
-- How to troubleshoot basic connectivity problems by checking the configuration and connections.
-- How to document a networking practical using screenshots, a Packet Tracer file, and a demonstration video.
+The recording is included in this folder. GitHub may not play a large MP4 inline in the code view, but the filename link opens the file page and provides access to the video.
 
----
+## 8. Main Concepts
 
-## Practical Resources
+### DHCP
 
-- **Packet Tracer File:** [dhcp.pkt](./dhcp.pkt)
-- **Demonstration Video:** [Screen Recording 2026-09-30 202440.mp4](./Screen%20Recording%202026-09-30%20202440.mp4)
+DHCP automatically provides client devices with network configuration such as an IPv4 address, subnet mask and default gateway. It reduces the need to manually configure each client and helps avoid address-management mistakes when the pool is configured correctly.
 
----
+### Address pool and lease
 
-## Result
+A DHCP pool defines the range and network settings from which client addresses can be assigned. A lease represents the period during which a client may use an assigned address.
 
-The DHCP practical was configured and tested in Cisco Packet Tracer, with the configuration documented using screenshots, the Packet Tracer file, and a demonstration video.
+### Verification and connectivity
+
+The PC's IP Configuration panel and `ipconfig` help verify client settings. Router DHCP commands, where applicable, help show pool and lease information. Ping can then be used to test reachability.
+
+## 9. What We Learned
+
+- The purpose of DHCP in a computer network.
+- How DHCP can automatically assign IPv4 configuration to client PCs.
+- How to connect network devices in Cisco Packet Tracer.
+- Why the DHCP pool, subnet mask and default gateway must match the network.
+- How to set a client to obtain its address using **Desktop → IP Configuration → DHCP**.
+- How to inspect client configuration with `ipconfig`.
+- How to use router commands to inspect interfaces and DHCP leases/pools where supported.
+- How to test connectivity after a client receives its address.
+- How to troubleshoot common addressing problems by checking links, interfaces, pool settings and gateways.
+- How to present the practical with a Packet Tracer file, screenshots and a video.
+
+## 10. Result
+
+The DHCP practical and its supporting evidence are organized in this folder. Open `dhcp.pkt` to inspect the saved lab, review the screenshots, and use the video link to follow the recorded demonstration. Verify the assigned client addresses in Packet Tracer before concluding that DHCP is working correctly.
