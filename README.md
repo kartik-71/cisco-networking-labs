@@ -13,6 +13,7 @@ This repository documents networking practicals completed while learning network
 | [03 — RIP v2 Simulation](./03-RIP-v2-Simulation/README.md) | Dynamic routing, ARP, ICMP, route learning and Simulation Mode | [Packet Tracer file](./03-RIP-v2-Simulation/Ripconfiguration.pkt) |
 | [04 static routing](./04%20static%20routing/) | Static routes, destination networks, next hops and route verification | [Practical video](./04%20static%20routing/STATIC%20ROUTING%20PRACTICAL/Screen%20Recording%202026-10-03%20171408.mp4) |
 | [05 — STP (Spanning Tree Protocol)](./STP/README.md) | Root bridge election, redundant switch links, loop prevention and ping verification | [Ping results](./STP/STP-Ping-Results.svg) |
+| [06 — OSPF Three-Router Lab](./05-OSPF-3-ROUTER-LAB/README.md) | OSPFv2, area 0, neighbor adjacencies, dynamic routes and end-to-end ping | [Router configurations](./05-OSPF-3-ROUTER-LAB/router-configurations.txt) · [Routing table](./05-OSPF-3-ROUTER-LAB/routing-table-r1.txt) · [Neighbor output](./05-OSPF-3-ROUTER-LAB/ospf-neighbors.txt) · [Ping output](./05-OSPF-3-ROUTER-LAB/ping-test.txt) |
 
 ## How to Use This Repository
 
