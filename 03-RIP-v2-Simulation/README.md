@@ -1,172 +1,113 @@
 # Simulation of ARP, ICMP and RIP v2 Routing
 
-> **Networking Practical | Cisco Packet Tracer | Dynamic Routing | Packet Analysis**
+> **Networking Practical · Cisco Packet Tracer · Dynamic routing · Packet simulation**
 
 ## 1. Practical Overview
 
-This practical demonstrates how a small multi-router network can be configured and tested in **Cisco Packet Tracer**. The topology contains three routers (R0, R1 and R2), three switches and six PCs. Each router connects a local LAN, while serial links connect the routers to one another.
+This practical uses a three-router network to study how end devices communicate across multiple IP networks. The topology contains routers R0, R1 and R2, three switches and six PCs. Each router connects to a local LAN, and serial links connect R0 to R1 and R1 to R2.
 
-The main purpose is to understand how devices communicate across different IP networks, how routers learn remote routes through **Routing Information Protocol version 2 (RIP v2)**, and how **ARP** and **ICMP** behave when packets are sent across the topology. The router command outputs and PC ping tests provide evidence that interfaces are configured, routes are being learned, and connectivity can be checked.
+The practical focuses on **RIP version 2 (RIP v2)** for dynamic route exchange, **ARP** for resolving a local next-hop IPv4 address to a MAC address, and **ICMP** for connectivity testing. Router command output and PC ping results help verify interface status, routing information and network reachability.
 
 ## 2. Practical Details
 
 | Item | Details |
 |---|---|
-| **Practical name** | Simulation of ARP, ICMP and Routing Process Using Cisco Packet Tracer |
-| **Software** | Cisco Packet Tracer |
-| **Network devices** | 3 routers, 3 switches and 6 PCs |
-| **Routing protocol** | RIP version 2 |
-| **Network links** | Ethernet LAN links and serial router-to-router links |
-| **Main concepts** | IPv4 addressing, interface status, routing tables, RIP v2, ARP, ICMP and Simulation Mode |
-| **Verification** | `show ip interface brief`, `show ip route`, `show ip protocols` and ping tests |
+| Practical name | Simulation of ARP, ICMP and Routing Process Using Cisco Packet Tracer |
+| Software | Cisco Packet Tracer |
+| Devices | 3 routers, 3 switches and 6 PCs |
+| Routing protocol | RIP version 2 |
+| Connections | Ethernet LAN links and serial router-to-router links |
+| Main concepts | IPv4 addressing, routing tables, RIP v2, ARP, ICMP and Simulation Mode |
+| Verification | `show ip interface brief`, `show ip route`, `show ip protocols` and ping |
 
 ## 3. Objective
 
-To build a multi-router network and observe how ARP, ICMP and RIP v2 work in Cisco Packet Tracer. The practical aims to:
+To configure and verify a multi-router network, inspect RIP v2 route learning, test connectivity between router LAN interfaces, and observe ARP/ICMP packet events in Cisco Packet Tracer Simulation Mode.
 
-- Connect PCs to switches and switches to routers.
-- Connect the routers using serial links.
-- Configure IPv4 addresses on router interfaces and end devices.
-- Enable RIP v2 so routers can exchange routing information dynamically.
-- Check interface status and IP address assignments.
-- Inspect connected and RIP-learned routes in each routing table.
-- Use ping to test reachability between router interfaces across the network.
-- Use Simulation Mode to inspect packet movement and understand ARP and ICMP events.
+## 4. Topology Overview
 
-## 4. Network Topology
-
-The topology is arranged as three LANs connected through three routers.
-
-- **R0** connects to the left-side switch and its two PCs.
-- **R1** connects to the middle switch and its two PCs.
-- **R2** connects to the right-side switch and its two PCs.
-- Serial links connect R0 to R1 and R1 to R2.
-- RIP v2 exchanges routes between the routers so that each router can learn about networks that are not directly connected to it.
-
-### Topology Screenshot
+- **R0** connects to the first LAN, `192.168.1.0/24`.
+- **R1** connects to the middle LAN, `192.168.2.0/24`.
+- **R2** connects to the third LAN, `192.168.3.0/24`.
+- The R0–R1 serial network is `10.0.0.0/30`.
+- The R1–R2 serial network is `10.0.0.4/30`.
+- RIP v2 advertises the relevant networks so routers can learn routes to networks that are not directly connected.
 
 ![Three-router RIP v2 topology](https://github.com/user-attachments/assets/5f083d99-e642-49ba-9808-38153150785c)
 
-**What to look for:** the three LAN sections, router-to-switch connections, six end devices and the two serial connections between routers.
+Open [Ripconfiguration.pkt](./Ripconfiguration.pkt) in Cisco Packet Tracer to inspect the saved topology and configuration.
 
-## 5. IP Addressing and Routing Overview
+## 5. Router Addressing Summary
 
-The screenshots show these LAN networks and router addresses:
-
-| Network / Link | Network or address | Purpose |
+| Router | LAN interface address used in tests | Serial link information shown in evidence |
 |---|---|---|
-| R0 LAN | `192.168.1.0/24` | Local network connected to R0 |
-| R1 LAN | `192.168.2.0/24` | Local network connected to R1 |
-| R2 LAN | `192.168.3.0/24` | Local network connected to R2 |
-| R0–R1 serial link | `10.0.0.0/30` | Point-to-point router connection |
-| R1–R2 serial link | `10.0.0.4/30` | Point-to-point router connection |
+| R0 | `192.168.1.1` | `10.0.0.1` on the R0–R1 link |
+| R1 | `192.168.2.1` | `10.0.0.2` toward R0 and `10.0.0.5` toward R2 |
+| R2 | `192.168.3.1` | The R1–R2 link uses `10.0.0.4/30` |
 
-Router LAN interface addresses used in the connectivity tests:
+The LANs use a `/24` mask (`255.255.255.0`) and the serial links use `/30` masks (`255.255.255.252`). Confirm these values against the saved Packet Tracer project if you change the addressing plan.
 
-- R0 LAN interface: `192.168.1.1`
-- R1 LAN interface: `192.168.2.1`
-- R2 LAN interface: `192.168.3.1`
+## 6. Practical Files and Video Status
 
-A `/24` LAN uses subnet mask `255.255.255.0`; a `/30` serial network uses subnet mask `255.255.255.252`. Use the actual addresses in your Packet Tracer file if your final saved configuration differs.
+**Packet Tracer project:** [Open/download Ripconfiguration.pkt](./Ripconfiguration.pkt)
 
-## 6. Practical Demonstration Video
+**Video:** The README is ready for a video link, but a demonstration MP4 is not currently present inside `03-RIP-v2-Simulation/` in the repository. Upload the recording to this folder (or a `media/` subfolder) and update this section with its exact filename to make the link work.
 
-**▶️ [Watch / download the RIP v2 practical video](./media/Screen%20Recording%202026-10-01%20211929.mp4)**
+## 7. R0 — Verification Evidence
 
-The video is intended to show the practical setup and/or its verification in Cisco Packet Tracer. If the link does not open, check that the MP4 is uploaded to the `media` folder with the exact filename shown above. GitHub may not preview a large MP4 inline, but the file link can still be used to open or download it.
-
-## 7. Router R0 — Verification Evidence
-
-The following outputs were captured on **R0**.
-
-### 7.1 R0 Network Topology
+### 7.1 Network topology
 
 ![R0 network topology](https://github.com/user-attachments/assets/f3f0338a-6476-4539-be27-b6daf06a07f9)
 
-This image shows the left-side LAN connected to R0 and the serial connection toward the next router.
+This screenshot shows R0 connected to its local switch and the serial link toward R1.
 
-### 7.2 R0 — `show ip interface brief`
+### 7.2 `show ip interface brief`
 
 ![R0 show ip interface brief](https://github.com/user-attachments/assets/66300f19-c31b-4758-aa2d-67ddc4736a2b)
 
-**Purpose:** lists router interfaces, their assigned IP addresses and their line/protocol status.
+**Purpose:** checks interface names, assigned IP addresses and operational status.
 
-The captured output shows:
+The captured output shows FastEthernet0/0 at `192.168.1.1` and Serial0/1/0 at `10.0.0.1`, both **up/up**. Other listed interfaces are administratively down in this capture.
 
-- FastEthernet0/0: `192.168.1.1`, **up/up**
-- Serial0/1/0: `10.0.0.1`, **up/up**
-- FastEthernet0/1 and Serial0/1/1 are administratively down in this output.
-
-**Interpretation:** the active LAN and serial interfaces are operational in the captured state. An interface showing `administratively down` has been disabled and is not currently being used.
-
-### 7.3 R0 — `show ip route`
+### 7.3 `show ip route`
 
 ![R0 show ip route](https://github.com/user-attachments/assets/aeb0ee86-6d13-4a31-9009-81d2a14fc5ec)
 
-**Purpose:** displays routes that R0 can use to forward packets.
+**Purpose:** displays the routes R0 can use to forward traffic. The output includes directly connected routes marked `C` and RIP-learned routes marked `R`, showing that R0 has learned remote network information.
 
-Important route codes:
-
-- `C` — directly connected network.
-- `R` — route learned through RIP.
-- `L` — local interface address, where displayed by the router.
-
-The captured table includes R0's directly connected LAN and serial network, plus remote networks learned through RIP. This is evidence that routing information from other routers has reached R0.
-
-### 7.4 R0 — `show ip protocols`
+### 7.4 `show ip protocols`
 
 ![R0 show ip protocols](https://github.com/user-attachments/assets/b47eb815-2b59-4387-85a1-8542a0c809e5)
 
-**Purpose:** verifies which routing protocol is running and what networks are included in its configuration.
+**Purpose:** verifies the routing protocol, RIP version and advertised networks. The captured output identifies RIP and indicates version 2 for sending and receiving updates. The listed networks include `10.0.0.0` and `192.168.1.0`.
 
-The captured output indicates:
+## 8. R1 — Verification Evidence
 
-- Routing protocol: `rip`
-- RIP version 2 is configured to send and receive updates.
-- Networks listed for R0 include `10.0.0.0` and `192.168.1.0`.
-- Routing information is received from next-hop address `10.0.0.2`.
+The following screenshots were supplied for R1. Upload them to this practical's `media/` folder with the filenames shown here for the embedded image links to display.
 
-## 8. Router R1 — Verification Evidence
-
-The following filenames are reserved for the R1 screenshots. Upload each screenshot to the `media` folder using the exact filename so the links below display correctly.
-
-### 8.1 R1 — `show ip interface brief`
+### 8.1 `show ip interface brief`
 
 ![R1 show ip interface brief](./media/05-r1-show-ip-interface-brief.png)
 
-**Purpose:** checks the IP address and operational status of each R1 interface.
+The supplied output shows FastEthernet0/0 at `192.168.2.1`, Serial0/1/0 at `10.0.0.2`, and Serial0/1/1 at `10.0.0.5`; all three are **up/up** in the screenshot.
 
-The supplied R1 output shows:
-
-- FastEthernet0/0: `192.168.2.1`, **up/up**
-- Serial0/1/0: `10.0.0.2`, **up/up**
-- Serial0/1/1: `10.0.0.5`, **up/up**
-
-These active interfaces connect R1 to its LAN and to the serial networks on either side.
-
-### 8.2 R1 — `show ip route`
+### 8.2 `show ip route`
 
 ![R1 show ip route](./media/06-r1-show-ip-route.png)
 
-**Purpose:** checks R1's directly connected networks and the remote networks learned from R0 and R2.
+The routing table shows directly connected networks and remote routes learned through RIP. Entries marked `R` are RIP-learned routes; their next-hop addresses and outgoing interfaces help explain how packets are forwarded.
 
-The supplied output includes connected networks and RIP routes for remote LAN/serial networks. RIP-learned entries are marked with `R`; the next-hop address and outgoing interface indicate where R1 forwards traffic.
-
-### 8.3 R1 — `show ip protocols`
+### 8.3 `show ip protocols`
 
 ![R1 show ip protocols](./media/07-r1-show-ip-protocols.png)
 
-**Purpose:** confirms that RIP is active and shows the RIP version, networks being advertised and routing information sources.
-
-The supplied output indicates RIP version 2 send/receive behaviour, networks including `10.0.0.0` and `192.168.2.0`, and routing information sources `10.0.0.1` and `10.0.0.6`.
+The supplied output indicates RIP v2 send/receive behaviour. The networks listed include `10.0.0.0` and `192.168.2.0`, with routing information sources `10.0.0.1` and `10.0.0.6`.
 
 ## 9. PC0 Connectivity Tests
 
-Ping sends ICMP Echo Requests and checks whether ICMP Echo Replies return. The following tests are documented from PC0.
+Ping uses ICMP Echo Request and Echo Reply messages to test reachability.
 
 ### 9.1 PC0 to R0
-
-Command:
 
 ```text
 ping 192.168.1.1
@@ -174,11 +115,9 @@ ping 192.168.1.1
 
 ![PC0 ping to R0](./media/08-pc0-ping-r0.png)
 
-**Captured result:** 4 packets sent, 4 received, 0% packet loss. This confirms connectivity from PC0 to R0's LAN interface in the captured test.
+**Captured result:** 4 packets sent, 4 received, 0% packet loss.
 
 ### 9.2 PC0 to R1
-
-Command:
 
 ```text
 ping 192.168.2.1
@@ -186,11 +125,9 @@ ping 192.168.2.1
 
 ![PC0 ping to R1](./media/09-pc0-ping-r1.png)
 
-**Captured result:** 4 packets sent, 4 received, 0% packet loss. This demonstrates that PC0 can reach R1's LAN interface through the routed network.
+**Captured result:** 4 packets sent, 4 received, 0% packet loss.
 
 ### 9.3 PC0 to R2
-
-Command:
 
 ```text
 ping 192.168.3.1
@@ -198,82 +135,61 @@ ping 192.168.3.1
 
 ![PC0 ping to R2](./media/10-pc0-ping-r2.png)
 
-**Evidence status:** add the screenshot of the completed command and its ping statistics after running this test. Do not mark this test successful until the actual output confirms replies.
+**Evidence still required:** capture and upload the output of this test before reporting its result.
 
-## 10. Procedure — Step by Step
+## 10. Procedure
 
-1. Open Cisco Packet Tracer and create or open the three-router topology.
-2. Place three routers, three switches and six PCs in the workspace.
-3. Connect two PCs to each switch using Ethernet connections.
-4. Connect each switch to its local router using Ethernet connections.
-5. Connect R0 to R1 and R1 to R2 using serial links. Confirm that the routers have the required serial interfaces.
-6. Assign the correct IPv4 addresses and subnet masks to router interfaces.
-7. Configure each PC with an IP address, subnet mask and the default gateway for its LAN.
-8. Bring the required router interfaces up with the appropriate interface configuration commands.
-9. Configure RIP version 2 on each router and advertise the directly connected LAN and serial networks used in the topology.
-10. Allow RIP updates to propagate, then run `show ip interface brief` on each router to verify interface status.
-11. Run `show ip protocols` to check that RIP v2 is enabled and the expected networks are included.
-12. Run `show ip route` to confirm that remote routes appear with the RIP route code `R`.
-13. From PC0, open the command prompt and run the ping tests for `192.168.1.1`, `192.168.2.1` and `192.168.3.1`.
-14. To inspect packet behaviour, switch to **Simulation** mode and filter for ARP and ICMP events.
-15. Create a Simple PDU between a source PC and destination PC, then use **Capture / Forward** to step through the events.
-16. Open event details to inspect packet information and observe how traffic is forwarded hop by hop.
-17. Save the Packet Tracer project and capture screenshots of the topology, router commands, ping results and simulation events.
+1. Open Cisco Packet Tracer and open the saved project or create the three-router topology.
+2. Place three routers, three switches and six PCs.
+3. Connect two PCs to each switch and connect each switch to its local router.
+4. Connect R0 to R1 and R1 to R2 with serial links.
+5. Assign the IPv4 addresses and subnet masks to router interfaces and PCs.
+6. Configure the default gateway on each PC to point to its local router interface.
+7. Enable the required router interfaces.
+8. Configure RIP version 2 on each router and advertise the LAN and serial networks used in the topology.
+9. Run `show ip interface brief` on the routers to verify interface addresses and status.
+10. Run `show ip protocols` to check the RIP version and configured networks.
+11. Run `show ip route` to confirm that remote routes have been learned.
+12. From PC0, run the ping tests to `192.168.1.1`, `192.168.2.1` and `192.168.3.1`.
+13. Switch to **Simulation** mode and enable the relevant ARP and ICMP event filters.
+14. Create a Simple PDU between a source and destination PC.
+15. Use **Capture / Forward** to step through events and open packet details to inspect what happens at each hop.
+16. Save the project and capture evidence of the topology, router command outputs, ping results and simulation events.
 
-## 11. ARP, ICMP and RIP v2 — Main Concepts
+## 11. Main Concepts
 
-### ARP (Address Resolution Protocol)
+### ARP — Address Resolution Protocol
 
-ARP helps a device discover the MAC address associated with a local IPv4 address before sending an Ethernet frame on the local network. In Simulation Mode, an ARP request and reply may appear when the sender needs to resolve a next-hop address.
+ARP helps a device resolve an IPv4 next-hop address to a MAC address on the local network. The sender needs the destination's MAC address—or the MAC address of its next hop—before it can send an Ethernet frame.
 
-### ICMP (Internet Control Message Protocol)
+### ICMP — Internet Control Message Protocol
 
-ICMP supports network diagnostics and error reporting. The `ping` command uses ICMP Echo Request and Echo Reply messages to test reachability. Successful ping replies show that the destination responded to the test; they do not alone prove every application or service is working.
+ICMP is used for network diagnostics and error reporting. Ping sends ICMP Echo Requests and waits for Echo Replies. Successful replies indicate that the destination responded to the test.
 
-### RIP v2 (Routing Information Protocol version 2)
+### RIP v2 — Dynamic routing
 
-RIP v2 is a distance-vector dynamic routing protocol. Routers exchange route information with neighbouring routers and use hop count as the route metric. The `show ip route` and `show ip protocols` commands help verify learned routes and protocol configuration.
+RIP v2 allows neighbouring routers to exchange route information dynamically. It uses hop count as its metric. The `show ip route` command helps identify routes learned through RIP, while `show ip protocols` displays routing-protocol settings.
 
-## 12. File Guide — What Each File Is For
+## 12. File Guide
 
-| File or path | Main purpose |
+| File | Main purpose |
 |---|---|
-| `README.md` | Main practical report: overview, objective, topology, procedure, screenshots, tests and learning outcomes. |
-| `Ripconfiguration.pkt` | Cisco Packet Tracer project file containing the network topology and device configuration. Open it in Packet Tracer to inspect or repeat the practical. |
-| `media/Screen Recording 2026-10-01 211929.mp4` | Intended location for the practical demonstration video. Upload the matching MP4 to this folder for the link above to work. |
-| `media/05-r1-show-ip-interface-brief.png` | R1 interface IP addresses and interface/protocol status. |
-| `media/06-r1-show-ip-route.png` | R1 routing table, including connected and RIP-learned routes. |
-| `media/07-r1-show-ip-protocols.png` | R1 RIP v2 version, advertised networks and routing information sources. |
-| `media/08-pc0-ping-r0.png` | PC0 ping output for R0 at `192.168.1.1`. |
-| `media/09-pc0-ping-r1.png` | PC0 ping output for R1 at `192.168.2.1`. |
-| `media/10-pc0-ping-r2.png` | PC0 ping output for R2 at `192.168.3.1`; capture and upload this evidence after running the test. |
-
-### Recommended folder structure
-
-```text
-03-RIP-v2-Simulation/
-├── README.md
-├── Ripconfiguration.pkt
-└── media/
-    ├── Screen Recording 2026-10-01 211929.mp4
-    ├── 05-r1-show-ip-interface-brief.png
-    ├── 06-r1-show-ip-route.png
-    ├── 07-r1-show-ip-protocols.png
-    ├── 08-pc0-ping-r0.png
-    ├── 09-pc0-ping-r1.png
-    └── 10-pc0-ping-r2.png
-```
-
-**Important:** the R0 images above are embedded directly in this README using GitHub attachment URLs. The R1 and PC0 image links in the table are filenames to use when uploading those image files into `media/`.
+| [`README.md`](./README.md) | Main report with overview, topology, procedure, evidence and learning outcomes |
+| [`Ripconfiguration.pkt`](./Ripconfiguration.pkt) | Saved Cisco Packet Tracer topology and configuration |
+| `media/05-r1-show-ip-interface-brief.png` | R1 interface IPs and status; upload this file to display it |
+| `media/06-r1-show-ip-route.png` | R1 routing table; upload this file to display it |
+| `media/07-r1-show-ip-protocols.png` | R1 RIP v2 protocol output; upload this file to display it |
+| `media/08-pc0-ping-r0.png` | PC0 ping evidence for R0; upload this file to display it |
+| `media/09-pc0-ping-r1.png` | PC0 ping evidence for R1; upload this file to display it |
+| `media/10-pc0-ping-r2.png` | PC0 ping evidence for R2; capture and upload this test |
+| Practical video | Not yet present in this folder; upload it and add its exact filename above |
 
 ## 13. What We Learned
 
-By completing this practical, we learned how to build and document a network with multiple routers, switches and end devices. We practised assigning IPv4 addresses, checking interface status and verifying that serial and Ethernet links are operational. We also learned how to read a routing table and distinguish directly connected routes from routes learned dynamically through RIP.
+This practical helped us understand how to connect multiple LANs through routers and how dynamic routing allows routers to learn about remote networks. We practised checking interface addresses and status, reading route codes, verifying RIP v2 settings and using ping to test reachability between local and remote router interfaces.
 
-The practical reinforced how RIP v2 allows routers to exchange network information without manually adding every remote route. The `show ip protocols` output helps confirm the routing protocol and advertised networks, while `show ip route` provides evidence of routes learned from neighbouring routers. The PC0 ping tests demonstrate how ICMP can be used to check reachability to router interfaces on local and remote networks.
-
-Finally, Simulation Mode provides a visual way to study ARP resolution and ICMP packet movement through the topology. Combining the Packet Tracer project, command outputs, connectivity tests, screenshots and video creates a repeatable record of the practical.
+We also reviewed the roles of ARP and ICMP. ARP resolves local next-hop MAC addresses, while ICMP supports ping-based connectivity checks. Simulation Mode can display packet events step by step, helping explain how packets cross switches and routers.
 
 ## 14. Result
 
-A three-router, three-switch and six-PC topology was prepared in Cisco Packet Tracer, and RIP v2 configuration was verified in the supplied R0 and R1 outputs. The recorded PC0 tests to R0 and R1 completed with 0% packet loss. The PC0-to-R2 test should be recorded separately and added to the evidence section after it has been run. The practical covers ARP, ICMP and dynamic route learning with RIP v2.
+The saved topology and supplied R0/R1 command outputs document a multi-router network using RIP v2. The two supplied PC0 ping tests—to R0 and R1—show 0% packet loss. The PC0-to-R2 result and any video demonstration should be added after the corresponding evidence is uploaded.
