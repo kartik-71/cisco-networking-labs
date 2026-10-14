@@ -1,90 +1,146 @@
-# Static Routing Practical
+# Static Routing Between Networks
 
-## Practical Description
+> **Cisco Packet Tracer · IPv4 routing · Static routes · Network verification**
 
-In this practical, I worked with Cisco Packet Tracer to understand and configure **static routing** between multiple routers and networks.
+## 1. Practical Overview
 
-The practical involved creating a router topology, connecting the devices, assigning IP addresses to router interfaces and PCs, and adding static routes so that different networks could communicate through the configured next-hop routers.
+This practical explores static routing in Cisco Packet Tracer. Static routing uses routes entered manually by a network administrator to tell a router how to reach a remote network. The lab involves connecting routers and LANs, configuring IPv4 addresses and entering destination network, subnet mask and next-hop information.
 
-The practical also included observing the router interfaces and static-route entries in the Cisco Packet Tracer Config tab.
+The folder contains the practical screen recording and screenshots captured during configuration. Review the saved evidence alongside the steps below.
 
-## Topology
+## 2. Practical Details
 
-The practical uses multiple routers connected through Ethernet links with separate LANs connected to the routers.
+| Item | Details |
+|---|---|
+| Practical name | Static Routing Between Networks |
+| Software | Cisco Packet Tracer |
+| Main topic | Manually configured IPv4 routes |
+| Key concepts | Router interfaces, LAN addressing, subnet masks, destination network, next hop and routing table |
+| Verification | `show ip interface brief`, `show ip route` and ping tests where performed |
 
-The main concepts demonstrated are:
+## 3. Objective
 
-- Router-to-router connectivity
-- LAN addressing
-- IPv4 addressing
-- Static routing
-- Next-hop configuration
-- Routing between different networks
-- Interface configuration and verification
-- Redundant network paths
+To understand how routers forward packets to remote networks using manually configured static routes, and to practise configuring interfaces and checking routing information in Packet Tracer.
 
-## Static Route Configuration
+## 4. Network Topology
 
-Static routes were configured by specifying:
+The practical uses multiple routers connected together, with LANs attached to router interfaces. Each LAN requires an appropriate IPv4 network and subnet mask. For communication between different LANs, the routers need routes that identify where packets for remote destination networks should be sent.
 
-- Destination network
-- Subnet mask
-- Next-hop IP address
+### Topology and configuration evidence
 
-The Packet Tracer screenshots show static-route entries configured on the routers.
+- [Screenshot 1 — Screenshot 2026-10-03 171240.png](./Screenshot%202026-10-03%20171240.png)
+- [Screenshot 2 — Screenshot 2026-10-03 171519.png](./Screenshot%202026-10-03%20171519.png)
+- [Screenshot 3 — Screenshot 2026-10-03 171541.png](./Screenshot%202026-10-03%20171541.png)
+- [Screenshot 4 — Screenshot 2026-10-03 171604.png](./Screenshot%202026-10-03%20171604.png)
 
-For example, a static route follows the general format:
+## 5. Static Routing Concept
 
+A static route identifies:
+
+1. **Destination network** — the remote network that must be reached.
+2. **Subnet mask** — identifies the size of that destination network.
+3. **Next-hop IP address** — the neighbouring router to which packets should be forwarded, or the appropriate outgoing interface.
+
+The generic Cisco IOS command format is:
+
+```text
+ip route <destination-network> <subnet-mask> <next-hop-ip>
 ```
-Network: <destination-network>
-Mask: <subnet-mask>
-Next Hop: <next-hop-IP>
+
+For example, the values entered must match the actual addressing plan and the reachable next-hop address in the Packet Tracer topology. This README does not invent a specific route table that is not visible in the screenshots.
+
+## 6. Procedure
+
+1. Open Cisco Packet Tracer and create or open the static-routing topology.
+2. Place the routers and end devices required by the topology.
+3. Connect routers to one another and connect each LAN to its router using the appropriate interfaces and cables.
+4. Inspect the available router ports and confirm that the selected interfaces support the planned connections.
+5. Assign IPv4 addresses and subnet masks to the router interfaces.
+6. Enable the required interfaces and check their status.
+7. Configure the IP address, subnet mask and default gateway on each PC.
+8. Identify the remote networks that are not directly connected to each router.
+9. Add a static route for each required remote network using the destination network, mask and next-hop IP address.
+10. Run `show ip interface brief` to check interface status and IP assignments.
+11. Run `show ip route` to confirm that the static routes appear in the routing table.
+12. Use ping between suitable devices or router interfaces to test end-to-end connectivity.
+13. If a ping fails, verify the IP addresses, masks, interface state, next-hop address, return route and PC default gateway.
+14. Save the Packet Tracer project and retain the screenshots and screen recording as evidence.
+
+## 7. Verification Commands
+
+### Interface status
+
+```text
+show ip interface brief
 ```
 
-Static routing allows a router to forward packets to a remote network using a manually configured path.
+Use this command to check interface IP addresses and determine whether the required interfaces are up.
 
-## Router Configuration
+### Routing table
 
-The routers were configured through the Cisco Packet Tracer Config/CLI interface.
+```text
+show ip route
+```
 
-The practical involved checking the available interfaces and configuring the required router-to-router and LAN connections.
+A static route is typically marked with **S** in the Cisco routing table. Directly connected networks are marked with **C**. Confirm the actual route entries in the router output.
 
-## Verification
+### Connectivity test
 
-The configuration was checked using the router configuration interface and routing information.
+```text
+ping <destination-ip>
+```
 
-The screenshots included with this practical show:
+Ping checks whether the destination responds to ICMP Echo Requests. A successful test is useful evidence of reachability between the tested endpoints.
 
-- The Packet Tracer topology
-- Static route configuration on a router
-- Static route configuration on another router
-- The configured router connections
+## 8. Screenshots
 
-## Video of the Practical
+### Screenshot 1 — Initial practical evidence
 
-A screen recording of the practical is included in the `media` folder.
+![Static routing screenshot 1](./Screenshot%202026-10-03%20171240.png)
 
-## What We Learned
+### Screenshot 2 — Router configuration evidence
 
-In this practical, I learned:
+![Static routing screenshot 2](./Screenshot%202026-10-03%20171519.png)
 
-- How static routing works.
-- How routers forward packets to remote networks using a next-hop address.
-- How to configure static routes in Cisco Packet Tracer.
-- How to identify destination networks and subnet masks.
-- How router interfaces are used to connect different networks.
-- How to verify routing information from a router.
-- How multiple routers can be connected to create different paths between networks.
-- How static routes can be used to control the path selected by a router.
+### Screenshot 3 — Routing configuration evidence
 
-## Practical Outcome
+![Static routing screenshot 3](./Screenshot%202026-10-03%20171541.png)
 
-The practical helped me understand the difference between directly connected networks and remote networks learned through manually configured static routes.
+### Screenshot 4 — Additional verification evidence
 
-It also improved my understanding of router interfaces, IPv4 addressing, next-hop routing, and basic network troubleshooting in Cisco Packet Tracer.
+![Static routing screenshot 4](./Screenshot%202026-10-03%20171604.png)
 
----
+The filenames are retained as uploaded so that each image can be matched with the original capture.
 
-## Media
+## 9. Practical Demonstration Video
 
-The `media` folder contains the screenshots and screen recording associated with this practical.
+**[▶️ Watch / download the Static Routing practical video](./Screen%20Recording%202026-10-03%20171408.mp4)**
+
+The recording shows the practical work. Use the video together with the screenshots to review the configuration sequence.
+
+## 10. File Guide
+
+| File | Purpose |
+|---|---|
+| `README.md` | Main report containing the overview, static routing explanation, procedure, evidence and learning outcomes |
+| `Screen Recording 2026-10-03 171408.mp4` | Video demonstration of the practical |
+| `Screenshot 2026-10-03 171240.png` | First captured screenshot |
+| `Screenshot 2026-10-03 171519.png` | Second captured screenshot |
+| `Screenshot 2026-10-03 171541.png` | Third captured screenshot |
+| `Screenshot 2026-10-03 171604.png` | Fourth captured screenshot |
+
+## 11. What We Learned
+
+- How static routing enables communication with remote networks.
+- How to identify a destination network and its subnet mask.
+- Why a static route needs a reachable next-hop address or outgoing interface.
+- How to configure router interfaces and check whether they are operational.
+- How to inspect the routing table and identify static route entries.
+- How end devices use default gateways to reach other networks.
+- How to test network reachability with ping.
+- How to troubleshoot static routing by checking both the forward and return paths.
+- How to document a practical using screenshots and a screen recording.
+
+## 12. Result
+
+The practical demonstrates the main steps involved in preparing a multi-router topology and documenting static routing in Packet Tracer. The route entries and ping results should be checked against the saved topology to confirm that each intended remote network is reachable.
