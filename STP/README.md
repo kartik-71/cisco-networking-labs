@@ -51,13 +51,15 @@ show spanning-tree vlan 1
 S1 should be elected the root bridge. STP should place one end of the redundant S2–S3 link into an alternate/blocking state to prevent a Layer 2 loop. The exact switch port that blocks can vary based on bridge IDs and port costs.
 
 ## Ping Test Results
-The PC1 command prompt screenshot shows successful replies for both:
+The supplied PC1 command prompt shows successful tests:
 - `ping 192.168.1.2` — PC1 to PC2
 - `ping 192.168.1.3` — PC1 to PC3
 
 Both tests show **4 packets sent, 4 received, 0% packet loss**.
 
-![PC1 ping results](./STP-Ping-Results.png)
+![PC1 ping results](./STP-Ping-Results.svg)
+
+> The terminal visual is a recreated, readable version of the supplied ping screenshot.
 
 ## What I Learned
 - STP prevents Layer 2 loops when redundant switch links exist.
@@ -68,5 +70,5 @@ Both tests show **4 packets sent, 4 received, 0% packet loss**.
 - Successful ping tests confirm end-to-end IP connectivity between the PCs.
 
 ## Files
-- [PC1 ping results](./STP-Ping-Results.png)
-- Packet Tracer project file can be added here as `STP-Practical.pkt`.
+- [PC1 ping results](./STP-Ping-Results.svg)
+- The original Packet Tracer project (`stp.pkt`) was supplied in chat but has not been uploaded to this repository in this commit.
